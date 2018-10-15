@@ -1,0 +1,434 @@
+ul,
+li,
+ol,
+dd,
+dt,
+dl,
+p,
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+button {
+    margin: 0;
+    padding: 0;
+    font-weight: normal;
+    /*去掉所有 有默认边距元素的边距*/
+}
+
+button {
+    outline: none;
+}
+
+body,
+html {
+    font: 12px/1.5 '微软雅黑';
+    color: #31374e;
+}
+
+body {
+    background-color: #202539;
+}
+
+i {
+    font-style: normal;
+}
+
+a,
+u,
+s {
+    text-decoration: none;
+    /*去掉有修饰线元素的修饰线*/
+    color: #666666;
+    /*统一a标签字体颜色*/
+}
+
+ul,
+li,
+ol {
+    list-style: none;
+    /*去掉页面列表的样式*/
+}
+
+input {
+    outline: none;
+}
+
+img {
+    border: 0px;
+}
+
+header {
+    width: 100%;
+    background-color: #292e41;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99;
+}
+
+.logo_box {
+    width: 100%;
+}
+
+.logo {
+    margin: 0 60px;
+    height: 70px;
+}
+
+.logo>a {
+    float: left;
+    display: block;
+    height: 40px;
+    width: 106px;
+    margin-top: 15px;
+    background-image: url(../images/logo.png);
+    background-size: contain;
+}
+
+.first_title {
+    float: left;
+    margin-left: 60px;
+    color: #7a80a2;
+}
+
+.first_title>li {
+    float: left;
+    margin-left: 40px;
+    line-height: 70px;
+    font-size: 14px;
+    position: relative;
+}
+
+.first_title i.iconfont {
+    font-size: 12px;
+}
+
+.second_title {
+    width: 160px;
+    line-height: 40px;
+    position: absolute;
+    top: 70px;
+    left: -60px;
+    border: 1px solid #3a4056;
+    border-radius: 4px;
+    background-color: #292e42;
+    box-shadow: 0 0 10px 0 #1d2133;
+    display: none;
+}
+
+.second_title li {
+    padding: 0 10px;
+}
+
+.top_border {
+    border-top: 1px solid #31374e;
+}
+
+.second_title a {
+    color: #7a80a2;
+}
+
+.user {
+    float: right;
+    line-height: 70px;
+}
+
+.user a {
+    color: #7a80a2;
+    font-size: 14px;
+}
+
+.user span {
+    display: inline-block;
+    vertical-align: middle;
+    height: 14px;
+    width: 2px;
+    margin: 0 20px 4px;
+    background-color: #7a80a2;
+}
+
+.search {
+    float: right;
+    font-size: 14px;
+    color: #716d6d;
+    margin-top: 18px;
+    margin-right: 50px;
+    width: 260px;
+    height: 32px;
+    background-color: #fff;
+    border-radius: 3px;
+}
+
+.search_type {
+    float: left;
+    text-align: center;
+    width: 70px;
+    line-height: 32px;
+    position: relative;
+}
+
+.search_type ul {
+    position: absolute;
+    width: 70px;
+    text-align: center;
+    line-height: 32px;
+    background-color: #fff;
+    border-radius: 3px;
+    display: none;
+}
+
+.search_type li {
+    border-top: 1px solid #959595;
+}
+
+.search_form span {
+    display: block;
+    margin-top: 6px;
+    float: left;
+    width: 1px;
+    height: 20px;
+    background-color: #d4d4d4;
+}
+
+.search_form {
+    float: left;
+}
+
+#search_text {
+    float: left;
+    border: none;
+    height: 30px;
+    line-height: 30px;
+    width: 145px;
+    padding-left: 8px;
+}
+
+#search_btn {
+    float: left;
+    border: none;
+    width: 36px;
+    height: 32px;
+    border-radius: 0 3px 3px 0;
+    background-color: #dcdcdc;
+}
+
+#search_btn i {
+    font-size: 18px !important;
+    color: #313131;
+}
+
+.nav_box {
+    width: 100%;
+    height: 30px;
+    background-color: #383d50;
+}
+
+.nav {
+    float: left;
+    line-height: 30px;
+    min-width: 1200px;
+    margin-left: 60px;
+    height: 30px;
+    color: #7a80a2;
+}
+
+.nav a {
+    color: #7a80a2;
+}
+
+a.nav_active {
+    color: #b9c0ef;
+}
+
+
+/* aside */
+
+aside {
+    height: 100%;
+    width: 35px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 100;
+    background-color: #1a1e2e;
+}
+
+.side_top,
+.side_bottom {
+    width: 35px;
+    position: absolute;
+    right: 0;
+}
+
+.side_top {
+    top: 50%;
+    margin-top: -80px;
+}
+
+.side_bottom {
+    bottom: 0;
+}
+
+aside a {
+    display: block;
+    width: 35px;
+    height: 40px;
+    text-align: center;
+    position: relative;
+}
+
+aside a:hover {
+    background-color: #ff6900;
+}
+
+aside a:hover .iconfont {
+    color: #fff;
+}
+
+aside .iconfont {
+    line-height: 40px;
+    font-size: 18px !important;
+    color: #7a80a2;
+}
+
+.remind {
+    font-size: 14px;
+    line-height: 40px;
+    width: 65px;
+    height: 40px;
+    position: absolute;
+    top: 0;
+    right: 35px;
+    color: #fff;
+    background-color: #ff6900;
+    display: none;
+}
+
+.side_qr {
+    width: 203px;
+    height: 200px;
+    top: -160px;
+    background: url(../images/guoniang.png) no-repeat;
+}
+
+
+/* aside */
+
+
+/* section */
+
+section {
+    padding-top: 100px;
+    margin-bottom: 60px;
+    width: 100%;
+    height: 1000px;
+}
+
+
+/* section */
+
+
+/* footer */
+
+footer {
+    width: 100%;
+    min-width: 1200px;
+    background-color: #292e41;
+}
+
+.footer {
+    width: 1200px;
+    height: 139px;
+    margin: 0 auto;
+    padding: 40px 0;
+}
+
+.footer_left {
+    float: left;
+}
+
+.footer_right {
+    float: left;
+    padding-top: 30px;
+    margin-left: 87px;
+}
+
+.link :nth-child(n) {
+    float: left;
+    margin-bottom: 20px;
+}
+
+.link a {
+    color: #7a80a2;
+    font-size: 14px;
+}
+
+.link a:hover {
+    color: #b9c0ef;
+}
+
+.link span {
+    display: inline-block;
+    margin: 0 6px;
+    height: 14px;
+    width: 2px;
+    margin-top: 4px;
+    background: #7a80a2;
+}
+
+.copyright,
+.copyright a {
+    color: #acb2cc;
+    line-height: 26px;
+}
+
+.footer_right a {
+    display: block;
+    float: left;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    margin-left: 10px;
+}
+
+.footer_right a:nth-of-type(1) {
+    position: relative;
+    background: url(../images/QC.png) no-repeat 0 0;
+}
+
+.footer_right a:nth-of-type(2) {
+    background: url(../images/QC.png) no-repeat 0 -46px;
+}
+
+.footer_right a:nth-of-type(3) {
+    background: url(../images/QC.png) no-repeat 0 -92px;
+}
+
+.footer_right a:nth-of-type(4) {
+    background: url(../images/QC.png) no-repeat 0 -184px;
+}
+
+.footer_right a:nth-of-type(5) {
+    background: url(../images/QC.png) no-repeat 0 -230px;
+}
+
+.footer_right a:hover {
+    background-position-x: -71px;
+}
+
+.footer_right a:nth-of-type(1) div {
+    position: absolute;
+    left: -37px;
+    top: -118px;
+    width: 110px;
+    height: 118px;
+    background: url(../images/QC.png) no-repeat 0 -285px;
+    display: none;
+}
+
+
+/* footer */
