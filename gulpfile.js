@@ -29,7 +29,7 @@ gulp.task("connect", () => {
     })
 });
 gulp.task('scripts', function() {
-    return gulp.src(['./sonkwo/js/*.js', "!sonkwo/js/jquery.js"])
+    return gulp.src(['./sonkwo/js/*.js', "!sonkwo/js/jquery-3.3.1.js"])
         .pipe(babel({
             presets: ['@babel/env']
         }))

@@ -1,0 +1,38 @@
+.banner {
+    width: 100%;
+    height: 420px;
+    position: relative;
+    overflow: hidden;
+}
+
+.banner button {
+    background: transparent;
+    z-index: 98;
+    position: absolute;
+    top: 50%;
+    margin-top: -27px;
+}
+
+.left_btn {
+    left: 40px;
+}
+
+.right_btn {
+    right: 40px;
+}
+
+.banner i {
+    font-size: 50px;
+    color: #7a80a2;
+    background: none;
+}
+
+.banner ul {
+    position: absolute;
+}
+
+.banner img {
+    width: 100%;
+    max-width: 1920px;
+    height: auto;
+}
