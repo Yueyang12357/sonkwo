@@ -103,6 +103,14 @@ header {
     position: relative;
 }
 
+.first_title>li:hover {
+    color: #b9c0ef;
+}
+
+.ft_active {
+    color: #b9c0ef;
+}
+
 .first_title i.iconfont {
     font-size: 12px;
 }

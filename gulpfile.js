@@ -11,6 +11,10 @@ gulp.task("html", () => {
     return gulp.src("./sonkwo/*.html")
         .pipe(gulp.dest("dist/"));
 });
+gulp.task("font", () => {
+    return gulp.src("./sonkwo/font/iconfont.css")
+        .pipe(gulp.dest("dist/font"));
+});
 gulp.task("watch", () => {
     gulp.watch("./sonkwo/*.html", ["html"]);
     gulp.watch("./sonkwo/css/*.css", ["cssmin"]);
@@ -37,17 +41,17 @@ gulp.task('cssmin', function() {
     gulp.src('sonkwo/css/*.css')
         .pipe(cssmin())
         .pipe(rename({ suffix: '.min' }))
-        .pipe(gulp.dest('dist'));
+        .pipe(gulp.dest('./dist/css'));
 });
 gulp.task('imagemin', () =>
     gulp.src('sonkwo/images/*')
     .pipe(imagemin())
-    .pipe(gulp.dest('dist/images'))
+    .pipe(gulp.dest('./dist/images'))
 );
 gulp.task('sass', function() {
     return gulp.src('./sonkwo/sass/sass/*.scss')
         .pipe(sass().on('error', sass.logError))
         .pipe(gulp.dest('./css'));
 });
-gulp.task("submit", ['html', 'scripts', 'cssmin', 'sass', 'imagemin']);
+gulp.task("submit", ['html', 'scripts', 'cssmin', 'sass', 'imagemin', 'font']);
 gulp.task("default", ["connect", "watch"]);
