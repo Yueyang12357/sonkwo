@@ -322,4 +322,134 @@ $(function() {
         box: '.groups_box',
         url: 'scripts/index.json'
     })
+
+    function Publisher() {};
+    $.extend(Publisher.prototype, LoadJson.prototype, {
+        renderPage() {
+            // console.log(this.json)
+            this.data = this.json.publishers;
+            var html = '';
+            for (var i = 0; i < this.data.length; i++) {
+                html += `<a href="#">
+                                <img src="${this.data[i].publisher_detail.logo}" alt="">
+                            </a>`
+            }
+            this.main.html(html);
+        }
+    })
+    var publisher = new Publisher();
+    publisher.init({
+        box: '.publisher_box',
+        url: 'scripts/publishers.json'
+    })
+
+    function Partners() {};
+    $.extend(Partners.prototype, LoadJson.prototype, {
+        renderPage() {
+            console.log(this.json)
+            this.data = this.json.partners;
+            var html = '<span>友情链接:</span>';
+            for (var i = 0; i < this.data.length; i++) {
+                html += `<a href="#">${this.data[i].name}</a>`
+            }
+            this.main.html(html);
+        }
+    })
+    var partners = new Partners();
+    partners.init({
+        box: '.partners_box',
+        url: 'scripts/publishers.json'
+    })
+
+    function WeekRank() {};
+    $.extend(WeekRank.prototype, LoadJson.prototype, {
+        renderPage() {
+            this.data = this.json.weekly_ranking;
+            var html = '';
+            for (var i = 0; i < this.data.length; i++) {
+                html += `<li>
+                            <a href="#">
+                                <img src="${this.data[i].sku_cover}" alt="">
+                                <div class="top_item">
+                                    <p class="item_name">${this.data[i].sku_name}</p>
+                                    <p class="item_data">发行于2018-10-19</p>
+                                </div>
+                                <p class="top_num">${i+1}</p>
+                            </a>
+                        </li>`
+            }
+            this.main.html(html);
+        }
+    })
+    var weekRank = new WeekRank();
+    weekRank.init({
+        box: '.top',
+        url: 'scripts/index.json'
+    })
+
+    function WaterFull() {};
+    $.extend(WaterFull.prototype, LoadJson.prototype, {
+        init(opts) {
+            this.main = $(opts.box);
+            this.url = opts.url;
+            this.page_num = 0;
+            this.rendering = false;
+            this.loadJson()
+                .then(function(res) {
+                    this.json = res;
+                    this.renderPage();
+                })
+            this.bindEvent();
+        },
+        bindEvent() {
+            $(window).scroll($.proxy(this.ifRender, this));
+        },
+        ifRender() {
+            this.children = this.main[0].children;
+            if (this.rendering) return 0;
+            if (this.children.length == 0) return 0;
+            var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+            var clientHeight = document.documentElement.clientHeight;
+            var lastChildren = this.children[this.children.length - 1];
+            var lastTop = lastChildren.offsetTop;
+            if (clientHeight + scrollTop > lastTop) {
+                this.rendering = true;
+                this.page_num++;
+                this.renderPage();
+            }
+        },
+        renderPage() {
+            this.data = this.json.new_tagged_games;
+            var html = '';
+            if (this.page_num > 3) {
+                return 0;
+            }
+            for (var i = this.page_num * 3; i <= this.page_num * 3 + 2; i++) {
+                html += `<li>
+                            <a href="#">
+                                <img src="${this.data[i].sku_cover}" alt="">
+                                <div class="item_info">
+                                    <p class="item_name">
+                                    ${this.data[i].sku_name}
+                                        <span>预售</span>
+                                    </p>
+                                    <p class="item_data">发行于2018-10-19</p>
+                                    <p class="tags">
+                                        <span>${this.data[1].product.searchable_tags[0].name}</span>
+                                        <span>${this.data[1].product.searchable_tags[1].name}</span>
+                                    </p>
+                                </div>
+                                <p class="item_price">￥${this.data[i].list_price}</p>
+                            </a>
+                        </li>`
+            }
+            this.main[0].innerHTML += html;
+            this.rendering = false;
+        }
+    })
+    var waterFull = new WaterFull();
+    waterFull.init({
+        box: '.item',
+        url: 'scripts/index.json'
+    })
 })
