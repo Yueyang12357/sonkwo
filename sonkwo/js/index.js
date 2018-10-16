@@ -41,7 +41,7 @@ $(function() {
         renderPage() {
             this.data = this.json.banner.banners;
             var html = '';
-            for (var i = 0; i < this.json.length; i++) {
+            for (var i = 0; i < this.data.length; i++) {
                 html += ` <li>
                             <a href="#" style="background-image: url(${this.data[i].cover});"></a>
                         </li>`;
@@ -152,7 +152,7 @@ $(function() {
     function Coupons() {};
     $.extend(Coupons.prototype, LoadJson.prototype, {
         renderPage() {
-            console.log(this.json)
+            console.log(this.json);
             this.data = this.json.gifts;
             var html = '';
             for (var i = 0; i < this.data.length; i++) {
@@ -172,6 +172,154 @@ $(function() {
     var coupons = new Coupons();
     coupons.init({
         box: '.coupons',
+        url: 'scripts/index.json'
+    })
+
+    function Headlines() {};
+    $.extend(Headlines.prototype, LoadJson.prototype, {
+        renderPage() {
+            this.data = this.json.headlines;
+            var html = `<img src="${this.data[0].cover.url}" alt="">
+                <div class="layer">
+                    <p>${this.data[0].title}</p>
+                </div>`;
+            this.main.html(html)
+        }
+    })
+    var headlines = new Headlines();
+    headlines.init({
+        box: '.headline',
+        url: 'scripts/index.json'
+    })
+
+    function NewGame() {};
+    $.extend(NewGame.prototype, LoadJson.prototype, {
+        renderPage() {
+            this.data = this.json.recommend_skus[0].items;
+            var html = '';
+            for (var i = 0; i < this.data.length; i++) {
+                html += `<a href="#">
+                            <div>
+                                <img src="${this.data[i].sku_cover}" alt="">
+                            </div>
+                            <div class="info">
+                                <p>${this.data[i].sku_name}</p>
+                                <span class="discount"></span>
+                                <span class="sale-price">￥${this.data[i].list_price}</span>
+                            </div>
+                        </a>`;
+            }
+            this.main.html(html);
+        }
+    })
+    var newGame = new NewGame();
+    newGame.init({
+        box: '.newgame-data',
+        url: 'scripts/index.json'
+    })
+
+    function HotGame() {};
+    $.extend(HotGame.prototype, LoadJson.prototype, {
+        renderPage() {
+            this.data = this.json.recommend_skus[1].items;
+            var html = '';
+            for (var i = 0; i < this.data.length; i++) {
+                html += `<a href="#">
+                            <div>
+                                <img src="${this.data[i].sku_cover}" alt="">
+                            </div>
+                            <div class="info">
+                                <p>${this.data[i].sku_name}</p>
+                                <span class="discount"></span>
+                                <span class="sale-price">￥${this.data[i].list_price}</span>
+                            </div>
+                        </a>`;
+            }
+            this.main.html(html);
+        }
+    })
+    var hotGame = new HotGame();
+    hotGame.init({
+        box: '.hotgame_data',
+        url: 'scripts/index.json'
+    })
+
+    function Special() {};
+    $.extend(Special.prototype, LoadJson.prototype, {
+        renderPage() {
+            this.data = this.json.booths[0].items;
+            var html = '';
+            for (var i = 0; i < this.data.length; i++) {
+                html += `<a href="#">
+                            <div>
+                                <img src="${this.data[i].cover}" alt="">
+                            </div>
+                            <p>${this.data[i].title}</p>
+                        </a>`
+            }
+            this.main.html(html);
+        }
+    })
+    var special = new Special();
+    special.init({
+        box: '.special_box',
+        url: 'scripts/index.json'
+    })
+
+    function Comment() {};
+    $.extend(Comment.prototype, LoadJson.prototype, {
+        renderPage() {
+            this.data = this.json.recommend_posts.items;
+            var html = '';
+            for (var i = 0; i < this.data.length; i++) {
+                html += ` <div class="comment_content">
+                            <img src="${this.data[i].group.logo}" alt="">
+                            <div class="comment_cover">
+                                <div class="comment_user">
+                                    <a href="#"><img src="${this.data[i].creator.avatar}" alt=""></a>
+                                    <a href="#">${this.data[i].creator.nickname}</a>
+                                </div>
+                                <a href="#">${this.data[i].content}</a>
+                                <p>${this.data[i].summary}</p>
+                            </div>
+                        </div>`
+            }
+            this.main.html(html);
+        }
+    })
+    var comment = new Comment();
+    comment.init({
+        box: '.comment_box',
+        url: 'scripts/index.json'
+    })
+
+    function Groups() {};
+    $.extend(Groups.prototype, LoadJson.prototype, {
+        renderPage() {
+            this.data = this.json.groups;
+            var html = '';
+            for (var i = 0; i < 3; i++) {
+                html += `  <div class="groups_block">
+                                <img src="${this.data[i].logo}" alt="">
+                                <div class="groups_cover">
+                                    <a href="#" class="groups_name">${this.data[i].name}</a>
+                                    <a href="#" class="groups_icon">
+                                        <img src="" alt="">
+                                    </a>
+                                    <p class="groups_leader"></p>
+                                    <p>
+                                        <span>玩家数：${this.data[i].member_count}</span>
+                                        <span>主题数：${this.data[i].posts_count}</span>
+                                    </p>
+                                </div>
+                            </div>`
+            }
+            this.main.html(html);
+        }
+    })
+    var groups = new Groups();
+    groups.init({
+        box: '.groups_box',
         url: 'scripts/index.json'
     })
 })
