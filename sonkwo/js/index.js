@@ -129,7 +129,6 @@ $(function() {
     $.extend(Activty.prototype, LoadJson.prototype, {
         renderPage() {
             this.data = this.json.ad.banners;
-            console.log(this.data)
             var html = '';
             for (var i = 0; i < this.data.length; i++) {
                 html += `<a href="${this.data[i].url}">
@@ -147,6 +146,32 @@ $(function() {
     var activity = new Activty();
     activity.init({
         box: '.activity_box',
+        url: 'scripts/index.json'
+    })
+
+    function Coupons() {};
+    $.extend(Coupons.prototype, LoadJson.prototype, {
+        renderPage() {
+            console.log(this.json)
+            this.data = this.json.gifts;
+            var html = '';
+            for (var i = 0; i < this.data.length; i++) {
+                html += `<div class="coupon-block">
+                                <div class="price">
+                                    <span class="symbol">￥</span>
+                                    <span>${this.data[i].coupons[0].value}</span>
+                                    <span class="condition">满${this.data[i].coupons[0].minimum_order}立减</span>
+                                </div>
+                                <div class="name">${this.data[i].name}</div>
+                                <div class="date">2018-08-29至2018-11-01</div>
+                            </div>`
+            }
+            this.main.html(html);
+        }
+    })
+    var coupons = new Coupons();
+    coupons.init({
+        box: '.coupons',
         url: 'scripts/index.json'
     })
 })
