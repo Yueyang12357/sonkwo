@@ -75,3 +75,52 @@ span.btn_active {
 
 
 /* banner */
+
+
+/* activity */
+
+.activity_box {
+    margin: 0 auto;
+    width: 1200px;
+    height: 280px;
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.activity_box a {
+    display: inline-block;
+    width: 590px;
+    height: 280px;
+    border-radius: 5px;
+    background-color: #33394d;
+}
+
+.activity_img {
+    width: 590px;
+    height: 220px;
+}
+
+.activity_img img {
+    border-radius: 5px 5px 0 0;
+}
+
+.activity_title {
+    width: 590px;
+    height: 60px;
+    text-align: center;
+}
+
+.activity_title p {
+    min-width: 590px;
+    line-height: 60px;
+    color: #b9c0ef;
+    font-size: 14px;
+    font-weight: bold;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+
+/* activity */
