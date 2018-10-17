@@ -1,0 +1,149 @@
+section {
+    width: 100%;
+    padding: 0;
+    margin: 100px 0 0 0;
+    background: url(../images/login_bg.jpg) no-repeat center;
+    background-size: cover;
+}
+
+.main {
+    width: 1200px;
+    height: 800px;
+    margin: 0 auto;
+}
+
+.login {
+    margin-top: 150px;
+    float: right;
+    width: 340px;
+    padding: 30px;
+    background: #292e42;
+    position: relative;
+    border-radius: 5px;
+}
+
+.login_tab {
+    width: 100%;
+    height: 36px;
+    border-bottom: 1px solid #3f4760;
+}
+
+.login_tab_btn {
+    float: left;
+    margin-right: 50px;
+    height: 100%;
+    color: #7a80a2;
+    font-size: 16px;
+}
+
+.login_active {
+    color: #b9c0ef;
+    border-bottom: 2px solid #b9c0ef;
+}
+
+.form_body {
+    margin-top: 30px;
+}
+
+.form_input input {
+    box-sizing: border-box;
+    width: 340px;
+    height: 40px;
+    color: #b9c0ef;
+    background-color: #202539;
+    border: 1px solid #3a4056;
+    border-radius: 2px;
+    padding-left: 20px;
+    font-size: 14px;
+    line-height: 40px;
+}
+
+input[type="submit"] {
+    padding: 0;
+    color: #fff;
+    background-color: #eb6100;
+}
+
+.form_input p {
+    padding-left: 5px;
+    font-size: 14px;
+    height: 21px;
+    line-height: 21px;
+    opacity: 0;
+}
+
+p.error {
+    color: #f44848;
+    opacity: 1;
+}
+
+p.warning {
+    color: #2666b5;
+    opacity: 1;
+}
+
+.iconfont {
+    margin-right: 10px;
+}
+
+.other_info {
+    font-size: 14px;
+    margin-top: 20px;
+    height: 40px;
+}
+
+.other_info div {
+    color: #7a80a2;
+    float: left;
+}
+
+.other_info a {
+    font-size: 14px;
+    float: right;
+    color: #eb6100;
+    margin-left: 10px;
+}
+
+.other_info span {
+    float: right;
+    display: block;
+    width: 1px;
+    height: 21px;
+    background-color: #eb6100;
+    margin-left: 10px;
+}
+
+input[type="checkbox"] {
+    margin: 0;
+    vertical-align: middle;
+}
+
+.form_foot {
+    text-align: center;
+    margin: 50px auto 0 auto;
+}
+
+.form_foot p {
+    font-size: 14px;
+    color: #7a80a2;
+    margin-bottom: 20px;
+}
+
+.form_foot div {
+    width: 100%;
+}
+
+.form_foot a {
+    display: inline-block;
+    width: 36px;
+    height: 36px;
+    background-image: url(../images/QC.png);
+}
+
+.form_foot a:nth-of-type(1) {
+    background-position: 0 -46px;
+}
+
+.form_foot a:nth-of-type(2) {
+    background-position: 0 0;
+}

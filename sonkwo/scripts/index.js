@@ -327,7 +327,6 @@ $(function() {
     function Publisher() {};
     $.extend(Publisher.prototype, LoadJson.prototype, {
         renderPage() {
-            // console.log(this.json)
             this.data = this.json.publishers;
             var html = '';
             for (var i = 0; i < this.data.length; i++) {
