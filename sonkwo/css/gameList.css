@@ -1,0 +1,83 @@
+section {
+    margin: 0 auto;
+    width: 1200px;
+}
+
+
+/* 搜索标题 */
+
+.search_title {
+    width: 100%;
+    height: 30px;
+    padding-top: 30px;
+}
+
+.search_title a {
+    font-size: 16px;
+    color: #7a80a2;
+    margin-right: 60px;
+}
+
+a.search_active {
+    font-size: 20px;
+    color: #b9c0ef;
+}
+
+
+/* 搜索标题 */
+
+
+/* 搜索条件 */
+
+.game_condition {
+    width: 100%;
+    padding-top: 40px;
+}
+
+.game_condition a {
+    font-size: 14px;
+    margin-right: 48px;
+    color: #7a80a2;
+}
+
+a.condition_active {
+    color: #b9c0ef;
+}
+
+
+/* 搜索条件 */
+
+
+/* 搜索列表 */
+
+.search_block {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.search_block::after {
+    content: '';
+    display: block;
+    overflow: hidden;
+    clear: both;
+}
+
+.game_list {
+    float: left;
+    width: 830px;
+}
+
+
+/* 搜索列表 */
+
+
+/* 搜索条件块 */
+
+.search_condition {
+    float: left;
+    width: 350px;
+    margin-left: 20px;
+}
+
+
+/* 搜索条件块 */

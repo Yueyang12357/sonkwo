@@ -600,6 +600,18 @@ button.tab_active {
 
 .game_list {
     width: 100%;
+    position: relative;
+}
+
+.item {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.item_active {
+    display: block;
 }
 
 .game_list li {
@@ -685,6 +697,21 @@ button.tab_active {
 .tab_right {
     float: left;
     margin-left: 20px;
+}
+
+.top_list {
+    position: relative;
+}
+
+.top {
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.top_active {
+    display: block;
 }
 
 .top a {

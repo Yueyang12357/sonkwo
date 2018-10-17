@@ -1,12 +1,13 @@
-$('header').load('main.html .header');
-$('aside').load('main.html .aside_box');
-$('footer').load('main.html .footer');
+// $('header').load('main.html .header');
+// $('aside').load('main.html .aside_box');
+// $('footer').load('main.html .footer');
 $(function() {
     function LoadJson() {}
     $.extend(LoadJson.prototype, {
         init(opts) {
             this.main = $(opts.box);
             this.url = opts.url;
+            this.tags = opts.tags;
             this.loadJson()
                 .then(function(res) {
                     this.json = res;
@@ -361,10 +362,11 @@ $(function() {
         url: 'scripts/publishers.json'
     })
 
-    function WeekRank() {};
-    $.extend(WeekRank.prototype, LoadJson.prototype, {
+    function Rank() {};
+    $.extend(Rank.prototype, LoadJson.prototype, {
         renderPage() {
-            this.data = this.json.weekly_ranking;
+            this.data = this.json[this.tags];
+            console.log(this.data)
             var html = '';
             for (var i = 0; i < this.data.length; i++) {
                 html += `<li>
@@ -381,10 +383,17 @@ $(function() {
             this.main.html(html);
         }
     })
-    var weekRank = new WeekRank();
+    var weekRank = new Rank();
     weekRank.init({
-        box: '.top',
-        url: 'scripts/index.json'
+        box: '.weekly_ranking',
+        url: 'scripts/index.json',
+        tags: 'weekly_ranking'
+    })
+    var monthRank = new Rank();
+    monthRank.init({
+        box: '.monthly_ranking',
+        url: 'scripts/index.json',
+        tags: 'monthly_ranking'
     })
 
     function WaterFull() {};
@@ -392,7 +401,10 @@ $(function() {
         init(opts) {
             this.main = $(opts.box);
             this.url = opts.url;
+            this.item = $(opts.item);
+            this.tags = opts.tags;
             this.page_num = 0;
+            this.item.css('height', 330);
             this.rendering = false;
             this.loadJson()
                 .then(function(res) {
@@ -414,14 +426,15 @@ $(function() {
             var lastTop = lastChildren.offsetTop;
             if (clientHeight + scrollTop > lastTop) {
                 this.rendering = true;
+                this.itemHeight();
                 this.page_num++;
                 this.renderPage();
             }
         },
         renderPage() {
-            this.data = this.json.new_tagged_games;
+            this.data = this.json[this.tags];
             var html = '';
-            if (this.page_num > 3) {
+            if (this.page_num > 7) {
                 return 0;
             }
             for (var i = this.page_num * 3; i <= this.page_num * 3 + 2; i++) {
@@ -445,11 +458,84 @@ $(function() {
             }
             this.main[0].innerHTML += html;
             this.rendering = false;
+        },
+        itemHeight() {
+            var height = this.main[0].offsetHeight;
+            this.item.css('height', height);
         }
     })
-    var waterFull = new WaterFull();
-    waterFull.init({
-        box: '.item',
-        url: 'scripts/index.json'
+    var waterFull_01 = new WaterFull();
+    waterFull_01.init({
+        box: '.new_tagged_games',
+        url: 'scripts/index.json',
+        item: '.game_list',
+        tags: 'new_tagged_games'
+    });
+
+    function Tab() {};
+    $.extend(Tab.prototype, {
+        init(opts) {
+            this.btn_list = $(opts.btn_list);
+            this.item_list = $(opts.item_list);
+            this.bindEvent();
+        },
+        bindEvent() {
+            this.btn_list.on('click', this.change.bind(this));
+        },
+        change(event) {
+            var target = event.target;
+            this.btn_list.removeClass('tab_active');
+            $(target).addClass('tab_active');
+            var index = $(target).index();
+            this.item_list.removeClass('item_active');
+            this.item_list.eq(index).addClass('item_active');
+            if (index == 1) {
+                this.tab02()
+            }
+            if (index == 2) {
+                this.tab03()
+            }
+        },
+        tab02() {
+            var waterFull_02 = new WaterFull();
+            waterFull_02.init({
+                box: '.presell_tagged_games',
+                url: 'scripts/index.json',
+                item: '.game_list',
+                tags: 'presell_tagged_games'
+            });
+        },
+        tab03() {
+            var waterFull_03 = new WaterFull();
+            waterFull_03.init({
+                box: '.sale_tagged_games',
+                url: 'scripts/index.json',
+                item: '.game_list',
+                tags: 'sale_tagged_games'
+            })
+        }
     })
+    var tab = new Tab();
+    tab.init({
+        btn_list: '.tab_left button',
+        item_list: '.item'
+    });
+
+    function RankTab() {};
+    $.extend(RankTab.prototype, Tab.prototype, {
+        change(event) {
+            var target = event.target;
+            this.btn_list.removeClass('tab_active');
+            $(target).addClass('tab_active');
+            var index = $(target).index();
+            if (index > 1) return 0;
+            this.item_list.removeClass('top_active');
+            this.item_list.eq(index).addClass('top_active');
+        }
+    })
+    var rankTab = new RankTab();
+    rankTab.init({
+        btn_list: '.tab_right button',
+        item_list: '.top'
+    });
 })

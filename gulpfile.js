@@ -18,18 +18,18 @@ gulp.task("font", () => {
 gulp.task("watch", () => {
     gulp.watch("./sonkwo/*.html", ["html"]);
     gulp.watch("./sonkwo/css/*.css", ["cssmin"]);
-    gulp.watch("./sonkwo/js/*.js", ["scripts"]);
+    gulp.watch("./sonkwo/scripts/*.js", ["scripts"]);
     gulp.watch("./sonkwo/sass/*.js", ["sass"]);
 });
 gulp.task("connect", () => {
     connect.server({
-        root: "dist/",
+        root: "sonkwo/",
         port: 8888,
         livereload: true
     })
 });
 gulp.task('scripts', function() {
-    return gulp.src(['./sonkwo/js/*.js', "!sonkwo/js/jquery-3.3.1.js"])
+    return gulp.src(['./sonkwo/scripts/*.js', "!sonkwo/scripts/jquery-3.3.1.js","!sonkwo/scripts/jquery.pagination.js"])
         .pipe(babel({
             presets: ['@babel/env']
         }))
