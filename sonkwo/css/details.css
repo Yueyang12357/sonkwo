@@ -61,6 +61,7 @@ section {
     float: left;
     width: 830px;
     margin-right: 20px;
+    position: relative;
 }
 
 .left_box li {
@@ -87,22 +88,43 @@ section {
     height: 352px;
 }
 
-.right_box {
-    float: left;
-    width: 350px;
-}
-
 .introduce_img_box {
     width: 790px;
     height: 351px;
     background-color: #000000;
+    position: relative;
 }
 
-.introduce_img_box>img {
+.view_img {
     width: 610px;
     height: 343px;
-    float: left;
     margin: 4px 0 4px 4px;
+    float: left;
+    position: relative;
+}
+
+.view_cover {
+    width: 610px;
+    height: 343px;
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    z-index: 99;
+}
+
+.view_img img {
+    width: 610px;
+    height: 343px;
+}
+
+.view {
+    width: 100px;
+    height: 100px;
+    border: 1px solid #333;
+    box-shadow: 0 0 10px #333;
+    position: absolute;
+    z-index: 4;
+    display: none;
 }
 
 .img_list {
@@ -142,6 +164,29 @@ section {
     border-right: 5px solid #508bf3;
     border-bottom: 5px solid transparent;
 }
+
+
+/* 放大镜 */
+
+.magnifying {
+    width: 350px;
+    height: 350px;
+    position: absolute;
+    left: 810px;
+    top: 20px;
+    z-index: 9;
+    display: none;
+    overflow: hidden;
+}
+
+.magnifying img {
+    width: 1220px;
+    height: 686px;
+    position: absolute;
+}
+
+
+/* 放大镜 */
 
 
 /* tips */
@@ -399,4 +444,392 @@ tr td:nth-of-type(1) {
 }
 
 
+/* comment_list */
+
+.comment_list {
+    width: 100%;
+}
+
+.comment_item {
+    background: #292e41;
+}
+
+.comment_item::after {
+    content: '';
+    display: block;
+    clear: both;
+    overflow: hidden;
+}
+
+.comment_user {
+    width: 240px;
+    padding: 15px;
+    float: left;
+}
+
+.portrait {
+    margin-right: 10px;
+    display: inline-block;
+}
+
+.portrait img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%
+}
+
+.commenter {
+    display: inline-block;
+    font-size: 14px;
+    width: 160px;
+}
+
+.commenter a {
+    color: #7a80a2;
+    margin-bottom: 3px;
+    width: 160px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    display: block;
+    font-weight: bold;
+}
+
+.commenter p {
+    color: #508bf3;
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+.comment_content_box {
+    padding: 20px 0;
+    float: left;
+    width: 510px;
+}
+
+.comment_content_box .star {
+    margin: 0;
+    float: none;
+}
+
+.release-time {
+    margin-top: 6px;
+    color: #7a80a2;
+}
+
+.comment_content {
+    margin: 15px 0;
+    color: #b9c0ef;
+    font-size: 14px;
+}
+
+.operation {
+    margin-top: 25px;
+}
+
+.operation a {
+    display: inline-block;
+    margin-right: 10px;
+    background-color: #3f4760;
+    border-radius: 2px;
+    padding: 5px 10px;
+    color: #7a80a2;
+    font-size: 13px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.operation i {
+    font-size: 13px;
+}
+
+.comment_list hr {
+    margin: 0;
+}
+
+
+/* comment_list */
+
+
 /* comment */
+
+
+/* right_box */
+
+.right_box {
+    float: left;
+    width: 350px;
+}
+
+.sale_block,
+.evaluate,
+.game_info,
+.other_games,
+.games_copyright {
+    background-color: #33394d;
+    width: 310px;
+    padding: 20px;
+    margin-bottom: 20px;
+    color: #7a80a2;
+    font-size: 14px;
+}
+
+.game_tags {
+    padding-top: 20px;
+}
+
+.game_tags span {
+    display: inline-block;
+    margin-right: 6px;
+    bottom: 6px;
+    background-color: #292e41;
+    border-radius: 4px;
+    padding: 4px 6px;
+    color: #b9c0ef;
+    font-size: 12px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.game_tags span:hover {
+    background: #202539;
+}
+
+.coupon {
+    display: inline-block;
+    margin-top: 10px;
+    background: #202539;
+    color: #fff;
+    font-size: 12px;
+    border-radius: 4px;
+}
+
+.coupon>span {
+    display: inline-block;
+    vertical-align: middle;
+    width: 23px;
+    height: 24px;
+    background: url(../images/yhq.png);
+}
+
+.coupon p {
+    display: inline-block;
+    height: 24px;
+    line-height: 24px;
+    cursor: pointer;
+    padding-right: 10px;
+    position: relative;
+}
+
+.coupon p::after {
+    content: '';
+    position: absolute;
+    right: 4px;
+    top: 7px;
+    display: inline-block;
+    border-top: 5px solid transparent;
+    border-left: 5px solid #508bf3;
+    border-bottom: 5px solid transparent;
+}
+
+.coupon p span {
+    color: #ff6900;
+    font-weight: bold;
+}
+
+.sale-price {
+    margin-top: 62px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #ff6900;
+}
+
+.cart {
+    padding-top: 10px;
+    padding-bottom: 17px;
+}
+
+.cart,
+.cart i,
+.cart a {
+    color: #fff;
+    line-height: 45px;
+    font-size: 18px;
+}
+
+.cart span {
+    display: inline-block;
+    line-height: 45px;
+    width: 45px;
+    height: 45px;
+    background-color: #ff6900;
+    cursor: pointer;
+    text-align: center;
+    border-radius: 2px;
+}
+
+.cart span {
+    background: #ff8400;
+}
+
+.cart p {
+    text-align: center;
+    line-height: 45px;
+    display: inline-block;
+    background-color: #bd10e0;
+    cursor: pointer;
+    width: 240px;
+    margin-left: 15px;
+    font-weight: bold;
+    border-radius: 2px;
+}
+
+.cart p:hover {
+    background: #DC34FF;
+}
+
+.wish {
+    padding-bottom: 13px;
+}
+
+.evaluate_box {
+    width: 310px;
+    border-radius: 2px;
+    background: #292e41;
+}
+
+.evaluate_box .score>p {
+    font-size: 44px;
+}
+
+.evaluate_box .score>p span {
+    display: block;
+    font-weight: normal;
+    font-size: 12px;
+    color: #7a80a2;
+}
+
+.evaluate_box .star {
+    margin-top: 20px;
+}
+
+.evaluate_box .star i {
+    font-size: 10px;
+}
+
+.evaluate_box .tags {
+    margin-left: 10px;
+    margin-top: 20px;
+    font-size: 16px;
+    font-weight: normal;
+}
+
+.evaluate_box a {
+    margin-top: 10px;
+    font-size: 12px;
+    line-height: 25px;
+    cursor: pointer;
+    width: 90px;
+    display: inline-block;
+    background-color: #33394d;
+    text-align: center;
+    color: #b9c0ef;
+}
+
+.game_info_box {
+    width: 310px;
+}
+
+.game_info_box p {
+    margin-bottom: 5px;
+    color: #b9c0ef;
+    font-size: 14px;
+}
+
+.game_info_box span {
+    display: inline-block;
+    width: 60px;
+    color: #7a80a2;
+    height: 20px;
+}
+
+.game_info_box a {
+    line-height: 25px;
+    border-radius: 2px;
+    background: #292e41;
+    margin-left: 5px;
+    color: #b9c0ef;
+    padding: 0 5px;
+    display: inline-block;
+}
+
+.game_info_box a:hover {
+    background: #202539;
+}
+
+.right_title {
+    margin-bottom: 20px;
+}
+
+.right_title::after {
+    content: '';
+    display: block;
+    clear: both;
+    overflow: hidden;
+}
+
+.right_title span {
+    font-size: 18px;
+    text-align: left;
+    color: #b9c0ef;
+}
+
+.right_title a {
+    margin-top: 4px;
+    float: right;
+    color: #7a80a2;
+    font-size: 14px;
+}
+
+.games {
+    margin-bottom: 25px;
+    width: 310px;
+}
+
+.games::after {
+    content: '';
+    display: block;
+    clear: both;
+    overflow: hidden;
+}
+
+.games img {
+    float: left;
+    width: 125px;
+    height: 75px;
+}
+
+.games_info {
+    float: left;
+    margin-left: 20px;
+    font-size: 14px;
+}
+
+.games_info a {
+    display: block;
+    color: #b9c0ef;
+    margin-bottom: 11px;
+}
+
+.games_info span {
+    line-height: 55px;
+    color: #ff6900;
+    font-weight: bold;
+}
+
+.games_copyright .right_title {
+    margin-bottom: 15px;
+}
+
+
+/* right_box */
