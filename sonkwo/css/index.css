@@ -670,6 +670,7 @@ button.tab_active {
     color: #ff6900;
     font-weight: bold;
     font-size: 16px;
+    margin-right: 20px;
 }
 
 .item_data {

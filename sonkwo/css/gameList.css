@@ -4,6 +4,59 @@ section {
 }
 
 
+/* 购物车 */
+
+.shopping_car {
+    float: right;
+    color: #fff;
+    line-height: 30px;
+    position: relative;
+}
+
+.shopping_car i.iconfont {
+    font-size: 28px;
+}
+
+.goods_list {
+    width: 200px;
+    background-color: #33394d;
+    border-radius: 5px;
+    position: absolute;
+    top: 35px;
+    left: -160px;
+    /* display: none; */
+}
+
+.goods_list li {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 0 10px;
+    box-sizing: border-box;
+}
+
+.goods_list li::after {
+    content: '';
+    display: block;
+    clear: both;
+    overflow: hidden;
+}
+
+.goods_list p {
+    float: left;
+    width: 150px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.goods_list span {
+    float: right;
+}
+
+
+/* 购物车 */
+
+
 /* 搜索标题 */
 
 .search_title {
@@ -69,12 +122,43 @@ a.condition_active {
 }
 
 .item_info {
-    width: 550px;
+    width: 500px;
 }
 
 .item {
     width: 100%;
 }
+
+.item li {
+    position: relative;
+}
+
+
+/* cart */
+
+.cart {
+    width: 30px;
+    height: 30px;
+    color: #fff;
+    background-color: transparent;
+    text-align: center;
+    position: absolute;
+    right: 20px;
+    top: 35px;
+    z-index: 10;
+}
+
+.cart:hover {
+    color: #ff6900;
+}
+
+.cart i.iconfont {
+    font-size: 28px;
+    line-height: 30px;
+}
+
+
+/* cart */
 
 
 /* 页码 */

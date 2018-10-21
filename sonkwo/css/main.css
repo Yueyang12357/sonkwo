@@ -97,6 +97,10 @@ header {
     color: #7a80a2;
 }
 
+.first_title>li>a {
+    color: #7a80a2;
+}
+
 .first_title>li {
     float: left;
     margin-left: 40px;
@@ -105,11 +109,12 @@ header {
     position: relative;
 }
 
-.first_title>li:hover {
+.first_title>li>a:hover,
+.first_title>li>a:hover+i {
     color: #b9c0ef;
 }
 
-.ft_active {
+li.ft_active>a {
     color: #b9c0ef;
 }
 
@@ -132,6 +137,10 @@ header {
 
 .second_title li {
     padding: 0 10px;
+}
+
+.second_title li:hover a {
+    color: #b9c0ef;
 }
 
 .top_border {

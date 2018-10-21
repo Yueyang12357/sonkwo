@@ -1,8 +1,11 @@
 $(function() {
+    var verificationCode = Math.round(Math.random() * 8999 + 1000);
+    $('.short a').text(verificationCode);
     $('.short a').on('click', function randomCode() {
-        var num = Math.round(Math.random() * 8999 + 1000);
-        $(this).html(num);
+        verificationCode = Math.round(Math.random() * 8999 + 1000);
+        $(this).text(verificationCode);
     });
+    var flags = [false, false, false, false, false]
 
     function Reg() {};
     $.extend(Reg.prototype, {
@@ -31,6 +34,7 @@ $(function() {
                 this.item.css({
                     borderColor: ''
                 })
+                flags[0] = true;
                 this.hint.removeClass();
             } else {
                 this.item.css({
@@ -49,13 +53,15 @@ $(function() {
         hint: '.form_input:nth-of-type(1) span'
     })
 
+
     function RegCode() {};
     $.extend(RegCode.prototype, Reg.prototype, {
         test() {
-            if (this.item.val() != '') {
+            if (this.item.val() != '' && this.item.val() == verificationCode) {
                 this.item.css({
                     borderColor: ''
                 })
+                flags[1] = true;
             } else {
                 this.item.css({
                     borderColor: '#f44848'
@@ -88,6 +94,7 @@ $(function() {
                 this.item.css({
                     borderColor: ''
                 })
+                flags[2] = true;
                 this.hint.removeClass();
             } else {
                 this.item.css({
@@ -116,6 +123,7 @@ $(function() {
                 this.item.css({
                     borderColor: ''
                 })
+                flags[3] = true;
                 this.hint.removeClass();
             } else {
                 this.item.css({
@@ -159,6 +167,7 @@ $(function() {
                 this.item.css({
                     borderColor: ''
                 })
+                flags[4] = true;
                 this.hint.removeClass();
             } else {
                 this.item.css({
@@ -176,5 +185,42 @@ $(function() {
     rePwd.init({
         item: '#rePwd',
         hint: '.form_input:nth-of-type(5) span'
+    })
+
+    $('#register').on('click', function(evt) {
+        if (evt.preventDefault) {
+            evt.preventDefault();
+        } else {
+            evt.returnValue = false;
+        }
+        if (flags.every(check) && $("#agree")[0].checked) {
+            var opt = {
+                url: 'php/register.php',
+                type: 'POST',
+                data: {
+                    'email': $('#email').val(),
+                    'password': $('#password').val(),
+                }
+            };
+            $.ajax(opt).done(function(res) {
+                console.log(res)
+                if (res == '成功') {
+                    // $.cookie('email', $('#email').val());
+                    $(location).attr('href', 'login.html');
+                } else {
+                    alert(res)
+                }
+            });
+        } else {
+            $('#email').blur();
+            $('#code').blur();
+            $('#emailCode').blur();
+            $('#password').blur();
+        }
+
+        function check(item) {
+            return item;
+        }
+
     })
 })

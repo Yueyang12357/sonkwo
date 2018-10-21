@@ -1,4 +1,6 @@
 $(function() {
+    var flags = [false, false];
+
     function NameReg() {};
     $.extend(NameReg.prototype, {
         init(opts) {
@@ -15,6 +17,7 @@ $(function() {
                 borderColor: '#2666b5'
             })
             if (this.item.val() == '') {
+                flags[0] = true;
                 this.tips.removeClass();
                 this.tips.children().removeClass();
                 this.tips.addClass('warning');
@@ -53,6 +56,7 @@ $(function() {
                 this.item.css({
                     borderColor: ''
                 })
+                flags[1] = true;
                 this.tips.removeClass();
             } else {
                 this.item.css({
@@ -70,4 +74,40 @@ $(function() {
         item: '#password',
         tips: '.form_input p:nth-of-type(2)'
     });
+
+    $('#login').on('click', function(evt) {
+        if (evt.preventDefault) {
+            evt.preventDefault();
+        } else {
+            evt.returnValue = false;
+        }
+        console.log(1)
+        if ($('#remember')[0].checked) {
+            console.log('记住密码')
+        }
+        if (flags.every(check)) {
+            var opt = {
+                url: 'php/login.php',
+                type: 'POST',
+                data: {
+                    'email': $('#username').val(),
+                    'password': $('#password').val(),
+                }
+            };
+            $.ajax(opt).done(function(res) {
+                if (res == '成功') {
+                    $.cookie('username', $('#username').val(), { expires: 7, path: '/' });
+                    $(location).attr('href', 'index.html');
+                } else {
+                    alert('登录失败:' + res);
+                }
+            });
+        } else {
+            alert('请确保输入正确');
+        }
+    });
+
+    function check(item) {
+        return item;
+    }
 })

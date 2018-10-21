@@ -122,15 +122,13 @@ $(function() {
             this.largeImg = $(opts.largeImg);
             var largeImgWidth = opts.largeImgWidth;
             var largeImgHeight = opts.largeImgHeight;
-            this.scaleWidth = largeImgWidth / this.main[0].offsetWidth;
-            this.scaleHeight = largeImgHeight / this.main[0].offsetHeight;
-            // console.log(this.scaleWidth, this.scaleHeight)
+            this.scaleHeight = this.main[0].offsetHeight / 100;
             this.bindEvent();
         },
         bindEvent() {
-            this.main.on('mouseenter', this.start.bind(this));
+            this.main.on('mouseover', this.start.bind(this));
             this.main.on('mousemove', this.showImg.bind(this));
-            this.main.on('mouseleave', this.end.bind(this));
+            this.main.on('mouseout', this.end.bind(this));
         },
         start() {
             this.view.show();
@@ -149,20 +147,19 @@ $(function() {
             if (top <= 0) top = 0;
             if (left >= maxLeft) left = maxLeft;
             if (top >= maxTop) top = maxTop;
-            console.log(left, top, maxLeft, maxTop)
             this.view.css({
                 left: left,
                 top: top
             })
             this.largeImg.css({
-                left: -left * this.scaleWidth,
+                left: -left * this.scaleHeight,
                 top: -top * this.scaleHeight
             })
         }
     })
     var magnifying = new Magnifying();
     magnifying.init({
-        main: '.view_img img',
+        main: '.view_cover',
         largeImg: '.magnifying img',
         view: '.view',
         show: '.magnifying',

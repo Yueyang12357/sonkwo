@@ -129,7 +129,7 @@ $(function() {
             this.data = this.json.ad.banners;
             var html = '';
             for (var i = 0; i < this.data.length; i++) {
-                html += `<a href="${this.data[i].url}">
+                html += `<a href="activity.html">
                             <div class="activity_img">
                                 <img src="${this.data[i].cover}" alt="">
                             </div>
@@ -150,7 +150,6 @@ $(function() {
     function Coupons() {};
     $.extend(Coupons.prototype, LoadJson.prototype, {
         renderPage() {
-            console.log(this.json);
             this.data = this.json.gifts;
             var html = '';
             for (var i = 0; i < this.data.length; i++) {
@@ -343,7 +342,6 @@ $(function() {
     function Partners() {};
     $.extend(Partners.prototype, LoadJson.prototype, {
         renderPage() {
-            console.log(this.json)
             this.data = this.json.partners;
             var html = '<span>友情链接:</span>';
             for (var i = 0; i < this.data.length; i++) {
@@ -362,7 +360,6 @@ $(function() {
     $.extend(Rank.prototype, LoadJson.prototype, {
         renderPage() {
             this.data = this.json[this.tags];
-            console.log(this.data)
             var html = '';
             for (var i = 0; i < this.data.length; i++) {
                 html += `<li>
@@ -534,4 +531,5 @@ $(function() {
         btn_list: '.tab_right button',
         item_list: '.top'
     });
+
 })

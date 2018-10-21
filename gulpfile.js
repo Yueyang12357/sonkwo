@@ -19,28 +19,32 @@ gulp.task("watch", () => {
     gulp.watch("./sonkwo/*.html", ["html"]);
     gulp.watch("./sonkwo/css/*.css", ["cssmin"]);
     gulp.watch("./sonkwo/scripts/*.js", ["scripts"]);
-    gulp.watch("./sonkwo/sass/*.js", ["sass"]);
+    gulp.watch("./sonkwo/sass/*.scss", ["sass"]);
 });
 gulp.task("connect", () => {
     connect.server({
-        root: "sonkwo/",
+        root: "dist/",
         port: 8888,
         livereload: true
     })
 });
+gulp.task('json', function() {
+    return gulp.src('./sonkwo/scripts/*.json')
+        .pipe(gulp.dest("./dist/scripts"));
+});
 gulp.task('scripts', function() {
-    return gulp.src(['./sonkwo/scripts/*.js', "!sonkwo/scripts/jquery-3.3.1.js","!sonkwo/scripts/jquery.pagination.js"])
+    return gulp.src(['./sonkwo/scripts/*.js', "!sonkwo/scripts/jquery-3.3.1.js", "!sonkwo/scripts/jquery.pagination.js", '!sonkwo/scripts/jquery.cookie.js'])
         .pipe(babel({
             presets: ['@babel/env']
         }))
-        .pipe(concat('all.js'))
+        // .pipe(concat('all.js'))
         .pipe(uglify())
         .pipe(gulp.dest('./dist/scripts'));
 });
 gulp.task('cssmin', function() {
     gulp.src('sonkwo/css/*.css')
         .pipe(cssmin())
-        .pipe(rename({ suffix: '.min' }))
+        // .pipe(rename({ suffix: '.min' }))
         .pipe(gulp.dest('./dist/css'));
 });
 gulp.task('imagemin', () =>
@@ -49,9 +53,9 @@ gulp.task('imagemin', () =>
     .pipe(gulp.dest('./dist/images'))
 );
 gulp.task('sass', function() {
-    return gulp.src('./sonkwo/sass/sass/*.scss')
+    return gulp.src('./sonkwo/sass/*.scss')
         .pipe(sass().on('error', sass.logError))
-        .pipe(gulp.dest('./css'));
+        .pipe(gulp.dest('./dist/css'));
 });
-gulp.task("submit", ['html', 'scripts', 'cssmin', 'sass', 'imagemin', 'font']);
+gulp.task("submit", ['html', 'scripts', 'cssmin', 'sass', 'imagemin', 'font', 'json']);
 gulp.task("default", ["connect", "watch"]);
